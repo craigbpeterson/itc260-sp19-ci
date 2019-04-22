@@ -48,8 +48,20 @@ class News extends CI_Controller {
         }
         else
         {
-            $this->news_model->set_news();
-            $this->load->view('news/success', $data);
+            // $this->news_model->set_news();
+            // $this->load->view('news/success', $data);
+
+            //get the return from the news story creation that was just attempted
+            $slug = $this->news_model->set_news();
+
+            if ($slug !== false)
+            {//slug sent
+                feedback('Data entered successfully!','info'); //this is a function in our common_helper.php
+                redirect('news/view/' . $slug); //display the view page of the news story that was just created
+            } else {//error
+                feedback('Data NOT entered!','error');
+                redirect('news/create'); //reload the create news page
+            }
         }
     }
 
