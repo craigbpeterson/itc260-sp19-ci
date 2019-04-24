@@ -24,13 +24,16 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
+              <?=makeLinks($this->config->item('nav1'))?> 
+
             <?php /* comment out original nav bar
             <li class="active"><a href="#" title="">Active Link</a></li>
 			<li><?=anchor('customer/mylist','Customers')?></li>
 			<li><?=anchor('customer/add','Add Customer')?></li>
+
+            <li><?=anchor('news/','News')?></li>
+            <li><?=anchor('news/create','Add News')?></li>
             */ ?>
-            <li><?=anchor('news/','View News')?></li>
-            <li><?=anchor('news/create','Create News')?></li>
           </ul>
         </div>
       </div>

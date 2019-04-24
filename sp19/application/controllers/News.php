@@ -5,12 +5,17 @@ class News extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->config->set_item('banner', 'News Section');
         $this->load->model('news_model'); //load the model News_model.php every time this controller is utilized
         $this->load->helper('url_helper'); //load helper functions from the core folder
     }
 
     public function index()
     {
+        $this->config->set_item('title', 'Seattle Sports News');
+
+        $nav1 = $this->config->item('nav1'); //gets the nav from custom_config.php
+
         $data['news'] = $this->news_model->get_news();
         $data['title'] = 'News archive';
 
@@ -19,6 +24,15 @@ class News extends CI_Controller {
 
     public function view($slug = NULL)
     {
+        // //slug without dashes
+        // $dashless_slug = str_replace('-', ' ', $slug);
+        //
+        // //uppercase slug words
+        // $dashless_slug = ucwords($dashless_slug);
+        //
+        // //use dashless slug for the title
+        // $this->config->set_item('title', 'News Flash - ' . $dashless_slug);
+
         $data['news_item'] = $this->news_model->get_news($slug);
 
         if (empty($data['news_item']))
@@ -27,6 +41,10 @@ class News extends CI_Controller {
         }
 
         $data['title'] = $data['news_item']['title'];
+
+        //using $data['title'] instead of the above commented slug manipulation
+        //retains special characters like apostrophes and does not require capitalizing characters
+        $this->config->set_item('title', 'News Flash - ' . $data['title']);
 
         $this->load->view('news/view', $data);
     }
@@ -57,6 +75,7 @@ class News extends CI_Controller {
             if ($slug !== false)
             {//slug sent
                 feedback('Data entered successfully!','info'); //this is a function in our common_helper.php
+                                                               //it displays bootswatch styled feedback at the top of the page (below the header)
                 redirect('news/view/' . $slug); //display the view page of the news story that was just created
             } else {//error
                 feedback('Data NOT entered!','error');
