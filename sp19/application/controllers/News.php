@@ -14,8 +14,6 @@ class News extends CI_Controller {
     {
         $this->config->set_item('title', 'Seattle Sports News');
 
-        $nav1 = $this->config->item('nav1'); //gets the nav from custom_config.php
-
         $data['news'] = $this->news_model->get_news();
         $data['title'] = 'News archive';
 
