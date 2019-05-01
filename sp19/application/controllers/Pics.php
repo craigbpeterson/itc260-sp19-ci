@@ -15,7 +15,7 @@ class Pics extends CI_Controller {
         $this->config->set_item('title', 'See Flickr Pics');
 
         $data['title'] = 'See Flickr Pics';
-        $data['default_tags'] = ['glacier', 'mountainbiking', 'camping'];
+        $data['default_tags'] = ['glacier', 'mountainbiking', 'camping', 'britneyspears'];
 
         $this->load->view('pics/index', $data);
 
@@ -31,12 +31,12 @@ class Pics extends CI_Controller {
             $data['title'] = $tags;
             $data['pics'] = $this->pics_model->get_pics($tags);
 
-            /*
-            echo "<pre>";
-            echo var_dump($data['pics']);
-            echo "</pre>";
-            die;
-            */
+            // 
+            // echo "<pre>";
+            // echo var_dump($data['pics']);
+            // echo "</pre>";
+            // die;
+
 
         }
 
