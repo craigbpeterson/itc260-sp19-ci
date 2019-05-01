@@ -27,7 +27,7 @@ $this->load->view($this->config->item('theme') . 'header');
         // ';
 
         echo '
-        <div class="col-sm-3">
+        <div class="col-md-3">
             <div class="card border-primary mb-3" style="max-width: 20rem;">
                 <div class="card-header">' . $pic->title . '</div>
                 <img class="card-img-bottom" title="' . $pic->title . '" src="' . $photo_url . '" />

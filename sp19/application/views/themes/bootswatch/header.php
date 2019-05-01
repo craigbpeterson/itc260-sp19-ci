@@ -20,12 +20,10 @@
   <body>
      <div class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
-        <nav>
-          <a href="<?=base_url()?>" class="navbar-brand"><?=$this->config->item('banner')?></a>
-    	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </nav>
+        <a href="<?=base_url()?>" class="navbar-brand"><?=$this->config->item('banner')?></a>
+	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="navbar-collapse collapse" id="navbarResponsive">
           <ul class="navbar-nav">
             <?=makeLinks($this->config->item('nav1'))?>
